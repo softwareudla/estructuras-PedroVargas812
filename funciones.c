@@ -65,7 +65,7 @@ void registrarLibro(struct libro libro[], int *contador) {
             printf("Error: Año inválido. Intente nuevamente.\n");
             while (getchar() != '\n'); // Limpiar el búfer de entrada
         }
-    }
+    
 
     strcpy(nuevoLibro.estado, "Disponible");
     libro[*contador] = nuevoLibro;
