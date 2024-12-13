@@ -57,22 +57,19 @@ void registrarLibro(struct libro libro[], int *contador) {
     // Validación del año de publicación
     while (1) {
         printf("Ingrese el año de publicación: ");
-        if (scanf("%d", &nuevoLibro.anio) == 1 && nuevoLibro.anio > 0|| 1 && nuevoLibro.anio < 2024) {
-            if (scanf("%d", &nuevoLibro.anio)  ) {
-            break;
-        }
-        else {
+        if (scanf("%d", &nuevoLibro.anio) == 1 && nuevoLibro.anio > 0 && nuevoLibro.anio < 2024) {
+            break; // Break the loop when input is valid
+        } else {
             printf("Error: Año inválido. Intente nuevamente.\n");
             while (getchar() != '\n'); // Limpiar el búfer de entrada
         }
-    
+    }
 
     strcpy(nuevoLibro.estado, "Disponible");
     libro[*contador] = nuevoLibro;
     (*contador)++;
     printf("Libro registrado exitosamente.\n");
 }
-
 
 void mostrarLibros(const struct libro libro[], int contador) {
     if (contador == 0) {
