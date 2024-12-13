@@ -44,7 +44,7 @@ void registrarLibro(struct libro libro[], int *contador) {
         }
     }
 
-    printf("Ingrese el titulo del libro: ");
+    printf("Ingrese el título del libro: ");
     fflush(stdin);
     fgets(nuevoLibro.titulo, sizeof(nuevoLibro.titulo), stdin);
     nuevoLibro.titulo[strcspn(nuevoLibro.titulo, "\n")] = '\0';
@@ -54,14 +54,25 @@ void registrarLibro(struct libro libro[], int *contador) {
     fgets(nuevoLibro.autor, sizeof(nuevoLibro.autor), stdin);
     nuevoLibro.autor[strcspn(nuevoLibro.autor, "\n")] = '\0';
 
-    printf("Ingrese el anio de publicacion: ");
-    scanf("%d", &nuevoLibro.anio);
+    // Validación del año de publicación
+    while (1) {
+        printf("Ingrese el año de publicación: ");
+        if (scanf("%d", &nuevoLibro.anio) == 1 && nuevoLibro.anio > 0|| 1 && nuevoLibro.anio < 2024) {
+            if (scanf("%d", &nuevoLibro.anio)  ) {
+            break;
+        }
+        else {
+            printf("Error: Año inválido. Intente nuevamente.\n");
+            while (getchar() != '\n'); // Limpiar el búfer de entrada
+        }
+    }
 
     strcpy(nuevoLibro.estado, "Disponible");
     libro[*contador] = nuevoLibro;
     (*contador)++;
     printf("Libro registrado exitosamente.\n");
 }
+
 
 void mostrarLibros(const struct libro libro[], int contador) {
     if (contador == 0) {
